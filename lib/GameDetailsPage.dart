@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_t2/GlobalData.dart';
 import 'package:flutter_t2/widgets/IntroduceText.dart';
 
@@ -29,10 +30,34 @@ class _GameDetailsState extends State<GameDetailsPage> {
             buildDivider(),
             buildInformation(),
             buildButtons(),
+            buildSnapshots(),
           ],
         ),
       ),
     );
+  }
+
+  Widget buildSnapshots() {
+    List<String> snapshots = GlobalData.snapshots;
+    return Container(
+        height: 120,
+        margin: EdgeInsets.only(
+            left: Dimens.margin, top: 20, right: Dimens.margin, bottom: 20),
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: snapshots.length,
+          itemBuilder: (context, index) {
+            return Container(
+              width: 200,
+              height: 120,
+              margin: EdgeInsets.only(left: index == 0 ? 0 : 20),
+              clipBehavior: Clip.antiAlias,
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(8)),
+              child: Image.asset(snapshots[index], fit: BoxFit.cover),
+            );
+          },
+        ));
   }
 
   Widget buildButtons() {
@@ -155,12 +180,16 @@ class _GameDetailsState extends State<GameDetailsPage> {
       child: Row(
         children: [
           Container(
-            width: 80,
-            height: 80,
-            child: CircleAvatar(
-              backgroundImage: AssetImage("assets/images/game_icon.png"),
+            child: ClipRRect(
+              borderRadius: BorderRadius.all(Radius.circular(20)),
+              child: Image.asset(
+                "assets/images/game_icon.png",
+                fit: BoxFit.cover,
+                width: 80,
+                height: 80,
+              ),
             ),
-            margin: EdgeInsets.only(right: 10),
+            margin: EdgeInsets.only(right: 20),
           ),
           Expanded(
             child: Column(
