@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_t2/GlobalData.dart';
+import 'package:flutter_t2/entity/PartsEntity.dart';
+import 'package:flutter_t2/entity/RecommendEntity.dart';
 import 'package:flutter_t2/widgets/IntroduceText.dart';
 
 /// GameDetailsPage
@@ -31,8 +33,111 @@ class _GameDetailsState extends State<GameDetailsPage> {
             buildInformation(),
             buildButtons(),
             buildSnapshots(),
+            buildParts(),
+            buildRecommends(),
+            buildRecommends(),
+            buildRecommends(),
+            buildRecommends(),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget buildRecommends() {
+    RecommendEntity recommends = GlobalData.recommends;
+    return Container(
+      margin: EdgeInsets.only(
+          left: Dimens.margin, right: Dimens.margin, bottom: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(recommends.title,
+              style: TextStyle(color: Colors.white, fontSize: 16)),
+          SizedBox(height: 10),
+          GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+              childAspectRatio: 3.5,
+            ),
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemCount: recommends.recommends.length,
+            itemBuilder: (context, index) {
+              Recommend data = recommends.recommends[index];
+              return Container(
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: Colors.white10,
+                  ),
+                  padding: EdgeInsets.only(left: 15, right: 15),
+                  child: Row(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.asset(
+                          data.icon,
+                          width: 50,
+                          height: 50,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      SizedBox(width: 15),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(data.name,
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 16)),
+                          SizedBox(height: 5),
+                          Text(data.info,
+                              style: TextStyle(
+                                  color: Colors.white54, fontSize: 14)),
+                        ],
+                      )
+                    ],
+                  ));
+            },
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget buildParts() {
+    PartsEntity parts = GlobalData.parts;
+    return Container(
+      margin: EdgeInsets.only(
+          left: Dimens.margin, right: Dimens.margin, bottom: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(parts.title,
+              style: TextStyle(color: Colors.white, fontSize: 16)),
+          SizedBox(height: 10),
+          SizedBox(
+            height: 120,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: parts.images.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  width: 200,
+                  height: 120,
+                  margin: EdgeInsets.only(left: index == 0 ? 0 : 20),
+                  clipBehavior: Clip.antiAlias,
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(8)),
+                  child: Image.asset(parts.images[index], fit: BoxFit.cover),
+                );
+              },
+            ),
+          )
+        ],
       ),
     );
   }
@@ -52,8 +157,7 @@ class _GameDetailsState extends State<GameDetailsPage> {
               height: 120,
               margin: EdgeInsets.only(left: index == 0 ? 0 : 20),
               clipBehavior: Clip.antiAlias,
-              decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(8)),
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
               child: Image.asset(snapshots[index], fit: BoxFit.cover),
             );
           },

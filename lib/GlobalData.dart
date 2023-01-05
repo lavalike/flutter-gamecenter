@@ -1,3 +1,9 @@
+import 'package:flutter_t2/entity/PartsEntity.dart';
+import 'package:flutter_t2/entity/RecommendEntity.dart';
+
+/// GlobalData
+/// @author: zhen51.wang
+/// @date: 2023/1/5/005
 class GlobalData {
   static final String gameName = "有乐斗地主";
   static final String gameIntroduce =
@@ -9,8 +15,26 @@ class GlobalData {
     "assets/images/game_icon.png",
     "assets/images/game_icon.png",
     "assets/images/game_icon.png",
-    "assets/images/game_icon.png"
+    "assets/images/game_icon.png",
   ];
+
+  static final PartsEntity parts = PartsEntity("游戏配件", [
+    "assets/images/game_icon.png",
+    "assets/images/game_icon.png",
+    "assets/images/game_icon.png",
+    "assets/images/game_icon.png",
+    "assets/images/game_icon.png",
+    "assets/images/game_icon.png",
+  ]);
+
+  static final RecommendEntity recommends = RecommendEntity("大家都在玩", [
+    Recommend("assets/images/game_icon.png", "英雄联盟手游", "2.0万人在玩"),
+    Recommend("assets/images/game_icon.png", "FIFA", "1.4万人在玩"),
+    Recommend("assets/images/game_icon.png", "火影忍者", "1.8万人在玩"),
+    Recommend("assets/images/game_icon.png", "QQ飞车", "2.0万人在玩"),
+    Recommend("assets/images/game_icon.png", "和平精英", "1.6万人在玩"),
+    Recommend("assets/images/game_icon.png", "王者荣耀", "1.3万人在玩"),
+  ]);
 }
 
 class Dimens {
