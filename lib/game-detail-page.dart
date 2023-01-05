@@ -1,12 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter_t2/data-source.dart';
-import 'package:flutter_t2/entity/parts-entity.dart';
-import 'package:flutter_t2/entity/performance-entity.dart';
-import 'package:flutter_t2/entity/recommend-entity.dart';
-import 'package:flutter_t2/widgets/introduce-text.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
+import 'data-source.dart';
+import 'entity/parts-entity.dart';
+import 'entity/performance-entity.dart';
+import 'entity/recommend-entity.dart';
+import 'widgets/introduce-text.dart';
 
 /// GameDetailsPage
 /// @author: zhen51.wang
@@ -53,7 +52,8 @@ class _GameDetailsState extends State<GameDetailsPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(performance.title, style: TextStyle(color: Colors.white, fontSize: 16)),
+            Text(performance.title,
+                style: TextStyle(color: Colors.white, fontSize: 16)),
             SizedBox(height: 10),
             GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

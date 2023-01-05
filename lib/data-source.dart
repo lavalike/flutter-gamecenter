@@ -1,6 +1,6 @@
-import 'package:flutter_t2/entity/parts-entity.dart';
-import 'package:flutter_t2/entity/performance-entity.dart';
-import 'package:flutter_t2/entity/recommend-entity.dart';
+import 'entity/parts-entity.dart';
+import 'entity/performance-entity.dart';
+import 'entity/recommend-entity.dart';
 
 /// DataSource
 /// @author: zhen51.wang
