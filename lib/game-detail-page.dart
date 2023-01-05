@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_t2/GlobalData.dart';
-import 'package:flutter_t2/entity/PartsEntity.dart';
-import 'package:flutter_t2/entity/RecommendEntity.dart';
-import 'package:flutter_t2/widgets/IntroduceText.dart';
+import 'package:flutter_t2/data-source.dart';
+import 'package:flutter_t2/entity/parts-entity.dart';
+import 'package:flutter_t2/entity/performance-entity.dart';
+import 'package:flutter_t2/entity/recommend-entity.dart';
+import 'package:flutter_t2/widgets/introduce-text.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 /// GameDetailsPage
 /// @author: zhen51.wang
@@ -35,8 +37,7 @@ class _GameDetailsState extends State<GameDetailsPage> {
             buildSnapshots(),
             buildParts(),
             buildRecommends(),
-            buildRecommends(),
-            buildRecommends(),
+            buildPerformance(),
             buildRecommends(),
           ],
         ),
@@ -44,8 +45,43 @@ class _GameDetailsState extends State<GameDetailsPage> {
     );
   }
 
+  Widget buildPerformance() {
+    PerformanceEntity performance = DataSource.performance;
+    return Container(
+        margin: EdgeInsets.only(
+            left: Dimens.margin, right: Dimens.margin, bottom: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(performance.title, style: TextStyle(color: Colors.white, fontSize: 16)),
+            SizedBox(height: 10),
+            GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                childAspectRatio: 3.5,
+              ),
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: performance.gifs.length,
+              itemBuilder: (context, index) {
+                String asset = performance.gifs[index];
+                return ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.asset(
+                    asset,
+                    fit: BoxFit.cover,
+                  ),
+                );
+              },
+            )
+          ],
+        ));
+  }
+
   Widget buildRecommends() {
-    RecommendEntity recommends = GlobalData.recommends;
+    RecommendEntity recommends = DataSource.recommends;
     return Container(
       margin: EdgeInsets.only(
           left: Dimens.margin, right: Dimens.margin, bottom: 20),
@@ -67,40 +103,45 @@ class _GameDetailsState extends State<GameDetailsPage> {
             itemCount: recommends.recommends.length,
             itemBuilder: (context, index) {
               Recommend data = recommends.recommends[index];
-              return Container(
-                  clipBehavior: Clip.antiAlias,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: Colors.white10,
-                  ),
-                  padding: EdgeInsets.only(left: 15, right: 15),
-                  child: Row(
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Image.network(
-                          data.icon,
-                          width: 50,
-                          height: 50,
-                          fit: BoxFit.cover,
+              return GestureDetector(
+                onTap: () {
+                  Fluttertoast.showToast(msg: data.name + "：" + data.info);
+                },
+                child: Container(
+                    clipBehavior: Clip.antiAlias,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: Colors.white10,
+                    ),
+                    padding: EdgeInsets.only(left: 15, right: 15),
+                    child: Row(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.network(
+                            data.icon,
+                            width: 50,
+                            height: 50,
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                      ),
-                      SizedBox(width: 15),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(data.name,
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 16)),
-                          SizedBox(height: 5),
-                          Text(data.info,
-                              style: TextStyle(
-                                  color: Colors.white54, fontSize: 14)),
-                        ],
-                      )
-                    ],
-                  ));
+                        SizedBox(width: 15),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(data.name,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 16)),
+                            SizedBox(height: 5),
+                            Text(data.info,
+                                style: TextStyle(
+                                    color: Colors.white54, fontSize: 14)),
+                          ],
+                        )
+                      ],
+                    )),
+              );
             },
           )
         ],
@@ -109,7 +150,7 @@ class _GameDetailsState extends State<GameDetailsPage> {
   }
 
   Widget buildParts() {
-    PartsEntity parts = GlobalData.parts;
+    PartsEntity parts = DataSource.parts;
     return Container(
       margin: EdgeInsets.only(
           left: Dimens.margin, right: Dimens.margin, bottom: 20),
@@ -125,14 +166,20 @@ class _GameDetailsState extends State<GameDetailsPage> {
               scrollDirection: Axis.horizontal,
               itemCount: parts.images.length,
               itemBuilder: (context, index) {
-                return Container(
-                  width: 200,
-                  height: 120,
-                  margin: EdgeInsets.only(left: index == 0 ? 0 : 20),
-                  clipBehavior: Clip.antiAlias,
-                  decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(8)),
-                  child: Image.network(parts.images[index], fit: BoxFit.cover),
+                return GestureDetector(
+                  onTap: () {
+                    commonJump(context);
+                  },
+                  child: Container(
+                    width: 200,
+                    height: 120,
+                    margin: EdgeInsets.only(left: index == 0 ? 0 : 20),
+                    clipBehavior: Clip.antiAlias,
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(8)),
+                    child:
+                        Image.network(parts.images[index], fit: BoxFit.cover),
+                  ),
                 );
               },
             ),
@@ -143,7 +190,7 @@ class _GameDetailsState extends State<GameDetailsPage> {
   }
 
   Widget buildSnapshots() {
-    List<String> snapshots = GlobalData.snapshots;
+    List<String> snapshots = DataSource.snapshots;
     return Container(
         height: 120,
         margin: EdgeInsets.only(
@@ -152,14 +199,19 @@ class _GameDetailsState extends State<GameDetailsPage> {
           scrollDirection: Axis.horizontal,
           itemCount: snapshots.length,
           itemBuilder: (context, index) {
-            return Container(
-              width: 200,
-              height: 120,
-              margin: EdgeInsets.only(left: index == 0 ? 0 : 20),
-              clipBehavior: Clip.antiAlias,
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
-              // child: Image.asset(snapshots[index], fit: BoxFit.cover),
-              child: Image.network(snapshots[index], fit: BoxFit.cover),
+            return GestureDetector(
+              onTap: () {
+                commonJump(context);
+              },
+              child: Container(
+                width: 200,
+                height: 120,
+                margin: EdgeInsets.only(left: index == 0 ? 0 : 20),
+                clipBehavior: Clip.antiAlias,
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(8)),
+                child: Image.network(snapshots[index], fit: BoxFit.cover),
+              ),
             );
           },
         ));
@@ -170,8 +222,10 @@ class _GameDetailsState extends State<GameDetailsPage> {
       margin: EdgeInsets.only(left: Dimens.margin, right: Dimens.margin),
       child: Row(
         children: [
-          InkWell(
-            onTap: () {},
+          GestureDetector(
+            onTap: () {
+              Fluttertoast.showToast(msg: "启动游戏");
+            },
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.white10,
@@ -183,8 +237,10 @@ class _GameDetailsState extends State<GameDetailsPage> {
               child: Text("启动", style: TextStyle(color: Colors.white)),
             ),
           ),
-          InkWell(
-            onTap: () {},
+          GestureDetector(
+            onTap: () {
+              Fluttertoast.showToast(msg: "评分");
+            },
             child: Container(
               margin: EdgeInsets.only(left: 20),
               decoration: BoxDecoration(
@@ -302,14 +358,14 @@ class _GameDetailsState extends State<GameDetailsPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  GlobalData.gameName,
+                  DataSource.gameName,
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 25,
                       fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  GlobalData.gameIntroduce,
+                  DataSource.gameIntroduce,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 14,
@@ -323,5 +379,12 @@ class _GameDetailsState extends State<GameDetailsPage> {
         ],
       ),
     );
+  }
+
+  void commonJump(BuildContext context) {
+    Fluttertoast.showToast(msg: "页面跳转");
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return GameDetailsPage();
+    }));
   }
 }
