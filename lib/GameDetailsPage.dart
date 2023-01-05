@@ -78,7 +78,7 @@ class _GameDetailsState extends State<GameDetailsPage> {
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(10),
-                        child: Image.asset(
+                        child: Image.network(
                           data.icon,
                           width: 50,
                           height: 50,
@@ -132,7 +132,7 @@ class _GameDetailsState extends State<GameDetailsPage> {
                   clipBehavior: Clip.antiAlias,
                   decoration:
                       BoxDecoration(borderRadius: BorderRadius.circular(8)),
-                  child: Image.asset(parts.images[index], fit: BoxFit.cover),
+                  child: Image.network(parts.images[index], fit: BoxFit.cover),
                 );
               },
             ),
@@ -158,7 +158,8 @@ class _GameDetailsState extends State<GameDetailsPage> {
               margin: EdgeInsets.only(left: index == 0 ? 0 : 20),
               clipBehavior: Clip.antiAlias,
               decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
-              child: Image.asset(snapshots[index], fit: BoxFit.cover),
+              // child: Image.asset(snapshots[index], fit: BoxFit.cover),
+              child: Image.network(snapshots[index], fit: BoxFit.cover),
             );
           },
         ));
@@ -286,8 +287,8 @@ class _GameDetailsState extends State<GameDetailsPage> {
           Container(
             child: ClipRRect(
               borderRadius: BorderRadius.all(Radius.circular(20)),
-              child: Image.asset(
-                "assets/images/game_icon.png",
+              child: Image.network(
+                "https://www.itying.com/images/flutter/3.png",
                 fit: BoxFit.cover,
                 width: 80,
                 height: 80,
