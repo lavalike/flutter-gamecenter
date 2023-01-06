@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_t2/data-source.dart';
-import 'package:flutter_t2/tab/classic-mobile-tab-page.dart';
-import 'package:flutter_t2/tab/cloud-game-tab-page.dart';
-import 'package:flutter_t2/tab/recommend-tab-page.dart';
+
+import 'data-source.dart';
+import 'tab/recommend-tab-page.dart';
 
 /// home-page
 /// @author: zhen51.wang
