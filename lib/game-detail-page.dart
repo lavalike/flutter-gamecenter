@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 import 'data-source.dart';
 import 'entity/parts-entity.dart';
@@ -104,9 +103,7 @@ class _GameDetailsState extends State<GameDetailsPage> {
             itemBuilder: (context, index) {
               Recommend data = recommends.recommends[index];
               return GestureDetector(
-                onTap: () {
-                  Fluttertoast.showToast(msg: data.name + "：" + data.info);
-                },
+                onTap: () {},
                 child: Container(
                     clipBehavior: Clip.antiAlias,
                     decoration: BoxDecoration(
@@ -223,9 +220,7 @@ class _GameDetailsState extends State<GameDetailsPage> {
       child: Row(
         children: [
           GestureDetector(
-            onTap: () {
-              Fluttertoast.showToast(msg: "启动游戏");
-            },
+            onTap: () {},
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.white10,
@@ -238,9 +233,7 @@ class _GameDetailsState extends State<GameDetailsPage> {
             ),
           ),
           GestureDetector(
-            onTap: () {
-              Fluttertoast.showToast(msg: "评分");
-            },
+            onTap: () {},
             child: Container(
               margin: EdgeInsets.only(left: 20),
               decoration: BoxDecoration(
@@ -382,7 +375,6 @@ class _GameDetailsState extends State<GameDetailsPage> {
   }
 
   void commonJump(BuildContext context) {
-    Fluttertoast.showToast(msg: "页面跳转");
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       return GameDetailsPage();
     }));
