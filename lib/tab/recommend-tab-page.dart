@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../data-source.dart';
 import '../entity/recommend-entity.dart';
+import '../game-detail-page.dart';
 
 /// recommend-tab-page
 /// @author: zhen51.wang
@@ -62,32 +63,39 @@ class _RecommendTabState extends State<RecommendTab> {
         itemCount: list.length,
         itemBuilder: (context, index) {
           Recommend data = list[index];
-          return Container(
-            margin: EdgeInsets.only(left: index == 0 ? 0 : 10),
-            child: Column(
-              children: [
-                Spacer(),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(5),
-                  child: Image.network(
-                    data.icon,
-                    width: 150,
-                    height: 200,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 5),
-                  child: Text(
-                    data.name,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return GameDetailsPage();
+              }));
+            },
+            child: Container(
+              margin: EdgeInsets.only(left: index == 0 ? 0 : 10),
+              child: Column(
+                children: [
+                  Spacer(),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(5),
+                    child: Image.network(
+                      data.icon,
+                      width: 150,
+                      height: 200,
+                      fit: BoxFit.cover,
                     ),
                   ),
-                ),
-                Spacer(),
-              ],
+                  Padding(
+                    padding: EdgeInsets.only(top: 5),
+                    child: Text(
+                      data.name,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
+                  Spacer(),
+                ],
+              ),
             ),
           );
         },

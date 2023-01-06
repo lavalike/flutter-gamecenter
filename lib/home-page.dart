@@ -49,8 +49,8 @@ class _HomeState extends State<HomePage> with SingleTickerProviderStateMixin {
         controller: _controller,
         children: [
           RecommendTab(),
-          CloudGameTab(),
-          ClassicMobileTab(),
+          RecommendTab(),
+          RecommendTab(),
         ],
       ),
     );
