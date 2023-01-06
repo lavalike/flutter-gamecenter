@@ -34,13 +34,12 @@ class DataSource {
   ]);
 
   static final RecommendEntity recommends = RecommendEntity("大家都在玩", [
-    Recommend(
-        "https://www.itying.com/images/flutter/1.png", "英雄联盟手游", "2.0万人在玩"),
-    Recommend("https://www.itying.com/images/flutter/2.png", "FIFA", "1.4万人在玩"),
-    Recommend("https://www.itying.com/images/flutter/3.png", "火影忍者", "1.8万人在玩"),
-    Recommend("https://www.itying.com/images/flutter/4.png", "QQ飞车", "2.0万人在玩"),
-    Recommend("https://www.itying.com/images/flutter/5.png", "和平精英", "1.6万人在玩"),
-    Recommend("https://www.itying.com/images/flutter/6.png", "王者荣耀", "1.3万人在玩"),
+    Recommend("assets/images/game_icon.png", "英雄联盟手游", "2.0万人在玩"),
+    Recommend("assets/images/game_icon.png", "FIFA", "1.4万人在玩"),
+    Recommend("assets/images/game_icon.png", "火影忍者", "1.8万人在玩"),
+    Recommend("assets/images/game_icon.png", "QQ飞车", "2.0万人在玩"),
+    Recommend("assets/images/game_icon.png", "和平精英", "1.6万人在玩"),
+    Recommend("assets/images/game_icon.png", "王者荣耀", "1.3万人在玩"),
   ]);
 
   static final PerformanceEntity performance = PerformanceEntity("Gif性能测试", [

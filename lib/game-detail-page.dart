@@ -36,7 +36,6 @@ class _GameDetailsState extends State<GameDetailsPage> {
             buildParts(),
             buildPerformance(),
             buildRecommends(),
-
             buildIconNames(),
             buildDivider(),
             buildInformation(),
@@ -45,7 +44,6 @@ class _GameDetailsState extends State<GameDetailsPage> {
             buildParts(),
             buildPerformance(),
             buildRecommends(),
-
             buildIconNames(),
             buildDivider(),
             buildInformation(),
@@ -132,7 +130,7 @@ class _GameDetailsState extends State<GameDetailsPage> {
                       children: [
                         ClipRRect(
                           borderRadius: BorderRadius.circular(10),
-                          child: Image.network(
+                          child: Image.asset(
                             data.icon,
                             width: 50,
                             height: 50,

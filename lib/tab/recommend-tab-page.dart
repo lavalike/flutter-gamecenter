@@ -76,7 +76,7 @@ class _RecommendTabState extends State<RecommendTab> {
                   Spacer(),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(5),
-                    child: Image.network(
+                    child: Image.asset(
                       data.icon,
                       width: 150,
                       height: 200,
