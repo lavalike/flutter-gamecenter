@@ -183,7 +183,8 @@ class _RecommendTabState extends State<RecommendTab> {
         case 22: // right
           print("press right");
           break;
-        case 66: // center
+        case 23: // ok
+        case 66: // enter
           print("press enter/ok");
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             return GameDetailsPage();
