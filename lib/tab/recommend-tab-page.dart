@@ -2,8 +2,10 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../data-source.dart';
+import '../entity/focus-color.dart';
 import '../entity/recommend-entity.dart';
 import '../game-detail-page.dart';
 
@@ -18,6 +20,17 @@ class RecommendTab extends StatefulWidget {
 }
 
 class _RecommendTabState extends State<RecommendTab> {
+  List<FocusNode> focusNodes = new List();
+  List<FocusColor> focusColors = new List();
+
+  @override
+  void dispose() {
+    super.dispose();
+    focusNodes.forEach((node) {
+      node?.dispose();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -57,7 +70,26 @@ class _RecommendTabState extends State<RecommendTab> {
 
   Widget _buildRecommendGames() {
     List<Recommend> list = DataSource.recommends.recommends;
-    return Expanded(
+    for (int i = 0; i < list.length; i++) {
+      FocusNode node = FocusNode();
+      node.addListener(() {
+        if (node.hasFocus) {
+          focusColors[i].background = Colors.white;
+          focusColors[i].font = Colors.black;
+        } else {
+          focusColors[i].background = Colors.transparent;
+          focusColors[i].font = Colors.white;
+        }
+        setState(() {
+          focusColors = focusColors;
+        });
+      });
+      focusColors.add(FocusColor(Colors.transparent, Colors.white));
+      focusNodes.add(node);
+    }
+    return Container(
+      margin: EdgeInsets.only(top: Dimens.margin),
+      height: 240,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: list.length,
@@ -69,37 +101,76 @@ class _RecommendTabState extends State<RecommendTab> {
                 return GameDetailsPage();
               }));
             },
-            child: Container(
-              margin: EdgeInsets.only(left: index == 0 ? 0 : 10),
-              child: Column(
-                children: [
-                  Spacer(),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(5),
-                    child: Image.asset(
-                      data.icon,
-                      width: 150,
-                      height: 200,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 5),
-                    child: Text(
-                      data.name,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
+            child: RawKeyboardListener(
+              focusNode: focusNodes[index],
+              onKey: (RawKeyEvent event) =>
+                  eventHandler(event, focusNodes[index]),
+              child: Container(
+                padding: EdgeInsets.all(2),
+                decoration: getDecoration(focusColors[index].background),
+                margin: EdgeInsets.only(left: index == 0 ? 0 : 10),
+                child: Column(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(5),
+                      child: Image.asset(
+                        data.icon,
+                        width: 150,
+                        height: 200,
+                        fit: BoxFit.cover,
                       ),
                     ),
-                  ),
-                  Spacer(),
-                ],
+                    Padding(
+                      padding: EdgeInsets.only(top: 5),
+                      child: Text(
+                        data.name,
+                        style: TextStyle(
+                          color: focusColors[index].font,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           );
         },
       ),
     );
+  }
+
+  Decoration getDecoration(Color color) {
+    return BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+        color: color,
+        shape: BoxShape.rectangle);
+  }
+
+  void eventHandler(RawKeyEvent event, FocusNode node) {
+    if (event is RawKeyEvent && event.data is RawKeyEventDataAndroid) {
+      RawKeyEventDataAndroid dataAndroid = event.data;
+      print("keyCode: ${dataAndroid.keyCode}");
+      switch (dataAndroid.keyCode) {
+        case 19: // up
+          print("press up");
+          break;
+        case 20: // down
+          print("press down");
+          break;
+        case 21: // left
+          print("press left");
+          break;
+        case 22: // right
+          print("press right");
+          break;
+        case 66: // center
+          print("press enter/ok");
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return GameDetailsPage();
+          }));
+          break;
+      }
+    }
   }
 }
