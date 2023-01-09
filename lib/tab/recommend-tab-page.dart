@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
@@ -22,6 +24,7 @@ class RecommendTab extends StatefulWidget {
 class _RecommendTabState extends State<RecommendTab> {
   List<FocusNode> focusNodes = new List();
   List<FocusColor> focusColors = new List();
+  var _dailyResponse = "No Daily Words";
 
   @override
   void dispose() {
@@ -29,6 +32,12 @@ class _RecommendTabState extends State<RecommendTab> {
     focusNodes.forEach((node) {
       node?.dispose();
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    requestDailyWord();
   }
 
   @override
@@ -62,6 +71,16 @@ class _RecommendTabState extends State<RecommendTab> {
                   fontSize: 14,
                 )),
           ),
+          Padding(
+            padding: EdgeInsets.only(top: 10),
+            child: Text(
+              _dailyResponse,
+              style: TextStyle(
+                color: Colors.white60,
+                fontSize: 12,
+              ),
+            ),
+          ),
           _buildRecommendGames(),
         ],
       ),
@@ -88,7 +107,7 @@ class _RecommendTabState extends State<RecommendTab> {
       focusNodes.add(node);
     }
     return Container(
-      margin: EdgeInsets.only(top: Dimens.margin),
+      margin: EdgeInsets.only(top: Dimens.margin / 2),
       height: 240,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
@@ -172,5 +191,23 @@ class _RecommendTabState extends State<RecommendTab> {
           break;
       }
     }
+  }
+
+  void requestDailyWord() async {
+    var client = HttpClient();
+    var request =
+        await client.getUrl(Uri.parse("http://open.iciba.com/dsapi/"));
+    var response = await request.close();
+    var result;
+    if (response.statusCode == HttpStatus.ok) {
+      var json = await response.transform(utf8.decoder).join();
+      var data = jsonDecode(json);
+      result = data["content"];
+    } else {
+      result = response.reasonPhrase;
+    }
+    setState(() {
+      _dailyResponse = result;
+    });
   }
 }
