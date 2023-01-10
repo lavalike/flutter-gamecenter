@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:reference_ui/fps/fps-manager.dart';
 
 import '../common/ui_param.dart';
 import '../focus_manager/tcl_focus_manager.dart';
@@ -33,6 +36,8 @@ class AppBarRouteScaffoldState extends State<AppBarRouteScaffold>
   UnderTabViewBar underTabViewBar;
   TabController mController;
   static List<String> tabList;
+  Timer timer;
+  var fpsValue = "0.00";
 
   /// 填充tab标签
   void initTabList() {
@@ -73,11 +78,17 @@ class AppBarRouteScaffoldState extends State<AppBarRouteScaffold>
     );
     initInsideWidget();
     initNodeList();
+    timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      setState(() {
+        fpsValue = double.parse(FpsManager.fps.toStringAsFixed(2)).toString();
+      });
+    });
   }
 
   @override
   void dispose() {
     super.dispose();
+    timer?.cancel();
     mController.dispose();
   }
 
@@ -120,6 +131,10 @@ class AppBarRouteScaffoldState extends State<AppBarRouteScaffold>
       body: Flex(
         direction: Axis.vertical,
         children: <Widget>[
+          Text(
+            "当前帧率：$fpsValue",
+            style: TextStyle(color: Colors.white, fontSize: 12),
+          ),
           Expanded(child: underTabBar),
           Expanded(
             flex: 6,

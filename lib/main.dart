@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:collection';
 import 'dart:io';
 import 'dart:ui';
@@ -5,6 +6,7 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:reference_ui/fps/fps-manager.dart';
 
 import 'routes/app_bar_route.dart';
 import 'routes/reference_ui_route.dart';
@@ -21,65 +23,51 @@ void main() {
     debugDefaultTargetPlatformOverride = targetPlatform;
   }
   runApp(ReferenceUI());
-  SchedulerBinding.instance.addTimingsCallback(_onReportTimings);
+  SchedulerBinding.instance.addTimingsCallback(FpsManager.onReportTimings);
 }
 
-class ReferenceUI extends StatelessWidget {
+class ReferenceUI extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _ReferenceState();
+  }
+}
+
+class _ReferenceState extends State<ReferenceUI> with TickerProviderStateMixin {
+  /// 会重复播放的控制器
+  AnimationController _repeatController;
+
+  /// 线性动画
+  Animation<double> _animation;
+
+  Timer timer;
+
+  @override
+  void initState() {
+    super.initState();
+
+    /// 动画持续时间是 3秒，此处的this指 TickerProviderStateMixin
+    _repeatController = AnimationController(
+      duration: const Duration(seconds: 3),
+      vsync: this,
+    )
+      ..repeat(); // 设置动画重复播放
+
+    // 创建一个从0到360弧度的补间动画 v * 2 * π
+    _animation = Tween<double>(begin: 0, end: 1).animate(_repeatController);
+  }
+
   /// This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-//      routes: {
-//        '/': (context) => ReferenceUIRoute(child: ChooseDisplayRoute()),
-//        '/launcher': (context) => ReferenceUIRoute(child: LauncherRoute()),
-//        '/flow': (context) => ReferenceUIRoute(child: ContentFlowRoute()),
-//        '/home': (context) => ReferenceUIRoute(child: AppBarRoute()),
-//      },
-      home: ReferenceUIRoute(child: AppBarRoute()),
+        home: ReferenceUIRoute(child: AppBarRoute()),
     );
   }
-}
 
-const maxframes = 100; // 100 帧足够了，对于 60 fps 来说
-final lastFrames = ListQueue<FrameTiming>(maxframes);
-const REFRESH_RATE = 60;
-const frameInterval = const Duration(
-    microseconds: Duration.microsecondsPerSecond ~/ REFRESH_RATE);
-
-void _onReportTimings(List<FrameTiming> timings) {
-  // 把 Queue 当作堆栈用
-  for (FrameTiming timing in timings) {
-    lastFrames.addFirst(timing);
+  @override
+  void dispose() {
+    timer.cancel();
+    super.dispose();
   }
-
-  // 只保留 maxframes
-  while (lastFrames.length > maxframes) {
-    lastFrames.removeLast();
-  }
-
-  print("current fps: $fps");
-}
-
-double get fps {
-  var lastFramesSet = <FrameTiming>[];
-  for (FrameTiming timing in lastFrames) {
-    if (lastFramesSet.isEmpty) {
-      lastFramesSet.add(timing);
-    } else {
-      var lastStart =
-          lastFramesSet.last.timestampInMicroseconds(FramePhase.buildStart);
-      if (lastStart - timing.timestampInMicroseconds(FramePhase.rasterFinish) >
-          (frameInterval.inMicroseconds * 2)) {
-        // in different set
-        break;
-      }
-      lastFramesSet.add(timing);
-    }
-  }
-  var framesCount = lastFramesSet.length;
-  var costCount = lastFramesSet.map((t) {
-    // 耗时超过 frameInterval 会导致丢帧
-    return (t.totalSpan.inMicroseconds ~/ frameInterval.inMicroseconds) + 1;
-  }).fold(0, (a, b) => a + b);
-  return framesCount * REFRESH_RATE / costCount;
 }
