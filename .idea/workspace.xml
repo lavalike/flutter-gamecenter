@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="119e2af7-c942-46c0-a1e7-6577af6536c1" name="Changes" comment="">
+    <list default="true" id="119e2af7-c942-46c0-a1e7-6577af6536c1" name="Changes" comment="feat(flutter):处理异常&#10;demo&#10;Closes ZHYYZCPT-143">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/ui_param.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/ui_param.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/flow_widget/flow_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/flow_widget/flow_card.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
