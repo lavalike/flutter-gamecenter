@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="119e2af7-c942-46c0-a1e7-6577af6536c1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.en.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/flutter_t2_android.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/app-store.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/app-tbrowser.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/app-tcast.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/google_c++编码规范.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/home-alexa.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/home-all4.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/home-baeble-music.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/home-bbc-iplay.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/home-bbc-news.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/home-bbc-sport.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/home-chili.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/home-demand5.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/home-filmbox-live.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/home-freeview-explore.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/home-freeview-play.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/home-ifood-tv.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/home-itv.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/home-mubi.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/home-netflix.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/home-rakuten-tv.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/home-search.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/home-stv.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/home-uk-tv.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/home-youtube.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/icon-source.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/icon-usb.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/icon-wifi.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/movie1.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/movie10.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/movie11.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/movie12.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/movie13.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/movie14.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/movie15.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/movie16.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/movie17.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/movie18.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/movie19.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/movie2.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/movie20.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/movie21.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/movie3.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/movie4.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/movie5.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/movie6.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/movie7.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/movie8.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/movie9.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/tv-atv.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/tv-av.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/tv-hdmi.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/common/images_url.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/common/key_code.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/common/ui_param.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/data/constant.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/data/key_code.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/flow/flow_card.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/flow/flow_set.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/flow/flow_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/flow/focus_box.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/focus_manager/key_code.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/focus_manager/tcl_focus_manager.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/focus_manager/tfocus_node.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/focus_manager/tfocus_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/component_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/focus_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/widget_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/models/top_post_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/routes/app_bar_route.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/routes/content_flow_route.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/routes/launcher_route.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/routes/main_route.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/routes/reference_ui_route.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/common_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/component_view.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/focus_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/main_view.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view_model/top_post_view_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/viewmodel/main_view_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/viewmodel/view_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/widgets/flow_widget/flow_card.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/widgets/flow_widget/flow_set.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/widgets/horizontal_post_list.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/widgets/launcher_content.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/widgets/tab_widget/model/keep_alive_shell.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/widgets/tab_widget/tab_bar.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/widgets/tab_widget/tabview.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/widgets/top_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.metadata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/game_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/loading.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/plants_vs_zombies.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/window_background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data-source.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/entity/focus-color.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/entity/parts-entity.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/entity/performance-entity.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/entity/recommend-entity.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/game-detail-page.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/home-page.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/tab/classic-mobile-tab-page.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/tab/cloud-game-tab-page.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/tab/recommend-tab-page.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/introduce-text.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2K77NThefQKmejcDHGOcjhWC4np" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="io.flutter.reload.alreadyRun" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/focus_manager" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\git\tcl\flutter_t2\lib\focus_manager" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="119e2af7-c942-46c0-a1e7-6577af6536c1" name="Changes" comment="" />
+      <created>1673313728290</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1673313728290</updated>
+    </task>
+    <servers />
+  </component>
+</project>

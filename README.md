@@ -1,6 +1,6 @@
-# flutter_t2
+# flutter gamecenter
 
-A new Flutter project.
+A new Flutter application.
 
 ## Getting Started
 

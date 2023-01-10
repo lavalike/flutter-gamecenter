@@ -1,29 +1,37 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'home-page.dart';
+import 'routes/app_bar_route.dart';
+import 'routes/reference_ui_route.dart';
 
 void main() {
-  runApp(MyApp());
+  /// Override target platform for cross-platform applications.
+  TargetPlatform targetPlatform;
+  if (Platform.isMacOS) {
+    targetPlatform = TargetPlatform.iOS;
+  } else if (Platform.isLinux || Platform.isWindows) {
+    targetPlatform = TargetPlatform.android;
+  }
+  if (targetPlatform != null) {
+    debugDefaultTargetPlatformOverride = targetPlatform;
+  }
+  runApp(ReferenceUI());
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class ReferenceUI extends StatelessWidget {
+  /// This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          // This is the theme of your application.
-          //
-          // Try running your application with "flutter run". You'll see the
-          // application has a blue toolbar. Then, without quitting the app, try
-          // changing the primarySwatch below to Colors.green and then invoke
-          // "hot reload" (press "r" in the console where you ran "flutter run",
-          // or simply save your changes to "hot reload" in a Flutter IDE).
-          // Notice that the counter didn't reset back to zero; the application
-          // is not restarted.
-          primarySwatch: Colors.blue,
-        ),
-        home: HomePage());
+//      routes: {
+//        '/': (context) => ReferenceUIRoute(child: ChooseDisplayRoute()),
+//        '/launcher': (context) => ReferenceUIRoute(child: LauncherRoute()),
+//        '/flow': (context) => ReferenceUIRoute(child: ContentFlowRoute()),
+//        '/home': (context) => ReferenceUIRoute(child: AppBarRoute()),
+//      },
+      home: ReferenceUIRoute(child: AppBarRoute()),
+    );
   }
 }
