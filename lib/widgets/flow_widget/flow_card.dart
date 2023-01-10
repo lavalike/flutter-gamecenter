@@ -92,11 +92,13 @@ class PostCardState extends State<PostCard>
   void dispose() {
     _isOff = true;
     _controller.dispose();
+    _controller = null;
     super.dispose();
   }
 
   @override
   void focus() {
+    if (_controller == null) return;
     setState(() {
       _scaleCurve =
           CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic);
@@ -120,6 +122,7 @@ class PostCardState extends State<PostCard>
 
   @override
   void blur() {
+    if (_controller == null) return;
     setState(() {
       _boxDecoration = BoxDecoration(
         borderRadius: BorderRadius.circular(7.0),

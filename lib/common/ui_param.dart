@@ -21,15 +21,17 @@ const TextStyle tabBarLabelStyle =
 TextStyle(fontSize: 40, color: ReferenceColors.textFieldColor, fontWeight: FontWeight.w400);
 
 /// =======right_side_zone============
-const double homeListView_itemRatio = 0.66;
-const double homeListView_aspectRatio = 0.7;
-const double homeListView_mainAxisSpacing = 13;
+const double homeListView_itemRatio = 0.84;
+const double homeListView_aspectRatio = 0.58;
+const double homeListView_mainAxisSpacing = 25;
+
 const double appListView_itemRatio = 0.84;
 const double appListView_aspectRatio = 0.58;
 const double appListView_mainAxisSpacing = 25;
-const double movieListView_itemRatio = 0.84;
+
+const double movieListView_itemRatio = 1;
 const double movieListView_aspectRatio = 1.4;
-const double movieListView_mainAxisSpacing = 13;
+const double movieListView_mainAxisSpacing = 25;
 
 /// ========flow_card transform=======
 const double cardTransformScale = 1.2;
